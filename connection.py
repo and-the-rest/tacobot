@@ -1,14 +1,11 @@
 import socket 
 import commands
 
-
+# Creates an instance of command class under commands.py
 getCommand = commands.command()
+
 # Class that connects to server and retrieves/sends
 class connect:
-
-	# Creates an instance of command class under commands.py
-	
-
 
     def __init__(self, server, channel, botnick, port):
 		ircsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
