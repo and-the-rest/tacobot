@@ -1,6 +1,7 @@
-import socket
+import socket 
+import commands
 
-# Class the connects to server and retrieves/sends
+# Class that connects to server and retrieves/sends
 class connect:
 
     def __init__(self, server, channel, botnick, port):
@@ -16,4 +17,4 @@ class connect:
 			print(ircmsg)
 
 			#if ircmsg.find(":$flipcoin"):
-				#flipacoin()
+				#commands.command.flipacoin()

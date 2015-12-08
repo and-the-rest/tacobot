@@ -1,17 +1,13 @@
-import connection
-
-# Simple class containing different commands
-#class commands:
-    	
+import connection  	
 
 #Basic configuration infomration
 server = "irc.rizon.net" 
-channel = "#gstech" 
+channel = "#gstech" #using this for test server
 botnick = "tacobot" 
 port = 6667
 
 
-# Create instance of irc bot
+# Create instance of the irc bot
 ircbot = connection.connect(server, channel, botnick, port)
 
 
