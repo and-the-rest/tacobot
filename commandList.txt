@@ -1,0 +1,1 @@
+$flipcoin - 50/50 chance heads or tails

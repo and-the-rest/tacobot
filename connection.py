@@ -20,7 +20,7 @@ class connect:
 			print(ircmsg)
 
 			if ircmsg.find(":$flipcoin") != -1:
-				print(getCommand.flipacoin())
+				ircsocket.send("PRIVMSG " + channel + " :" + getCommand.flipacoin() + "\n")
 
-			if ircmsg.find(":test") != -1:
-				print(getCommand.anotherTest())
+			if ircmsg.find("$commands") != -1:
+				ircsocket.send("PRIVMSG " + channel + " :" + getCommand.listCommands() + "\n")
