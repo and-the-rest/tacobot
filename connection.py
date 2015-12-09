@@ -1,8 +1,19 @@
 import socket 
 import commands
+import inspect 
 
 # Creates an instance of command class under commands.py
 getCommand = commands.command()
+
+# Stores all the commands
+commandsList = []
+
+# Retrieves all the methods from commands.py to make a list of callable commands
+def retrieveCommandList():
+    for x in inspect.getmembers(commands.command, inspect.ismethod):
+    	commandsList.append(x[0])
+
+retrieveCommandList()
 
 # Class that connects to server and retrieves/sends
 class connect:
@@ -14,13 +25,15 @@ class connect:
 		ircsocket.send("NICK "+ botnick +"\n") 
 		ircsocket.send("JOIN "+ channel +"\n")
 
+		# Loop that runs while the bot is active
 		while 1:
 			ircmsg = ircsocket.recv(2048) 
 			ircmsg = ircmsg.strip('\n\r') 
 			print(ircmsg)
 
-			if ircmsg.find(":$flipcoin") != -1:
-				ircsocket.send("PRIVMSG " + channel + " :" + getCommand.flipacoin() + "\n")
 
-			if ircmsg.find("$commands") != -1:
-				ircsocket.send("PRIVMSG " + channel + " :" + getCommand.listCommands() + "\n")
+			# Checks if message is in list of commands and calls it
+			for x in commandsList:
+				if (ircmsg.find("$" + x) != -1):
+					ircsocket.send("PRIVMSG " + channel + " :" + getattr(getCommand, x)() + "\n")
+					#print (getattr(getCommand, x))()
