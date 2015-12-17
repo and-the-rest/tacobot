@@ -1,3 +1,2 @@
 # tacobot
-A sentient being.
-
+A sentient being that is part taco part bot.
